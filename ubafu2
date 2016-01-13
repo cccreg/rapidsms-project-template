@@ -1,0 +1,37 @@
+from rapidsms.apps.base import AppBase
+
+class PingPong(AppBase):
+
+    def handle(self, msg):
+        if msg.text == 'ping':
+            msg.respond('pong')
+            return True
+        return False
+        (rapidsms-tut-venv)~/rapidsms_tut $ python manage.py startapp tut
+(rapidsms-tut-venv)~/rapidsms_tut $ tree tut
+tut
+├── __init__.py
+├── models.py
+├── tests.py
+└── views.py
+
+0 directories, 4 files
+(rapidsms-tut-venv)~/rapidsms_tut $
+INSTALLED_APPS = (
+   [...]
+    # RapidSMS
+    "tut",
+   [...]
+    "rapidsms.contrib.default",  # Must be last
+)
+(rapidsms-tut-venv)~/rapidsms_tut $ cat tut/app.py
+from rapidsms.apps.base import AppBase
+
+class PingPong(AppBase):
+
+    def handle(self, msg):
+        if msg.text == 'ping':
+            msg.respond('pong')
+            return True
+        return False
+(rapidsms-tut-venv)~/rapidsms_tut $
